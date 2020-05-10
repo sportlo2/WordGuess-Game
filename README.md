@@ -1,1 +1,2 @@
-# WordGuess-Game
+# Word-Guess-Game
+Javascript assignment
