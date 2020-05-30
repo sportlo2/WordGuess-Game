@@ -29,3 +29,7 @@ header {
     height: 600px;
   
 }
+
+.title {
+    font-weight: bold;
+}
