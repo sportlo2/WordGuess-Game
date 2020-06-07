@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Word Guess</title>
     <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!--my CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" <script src="assets/javascript/game.js">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
 </head>
 
 <body>
@@ -30,28 +30,29 @@
         </container>
 
         <container>
-            <h3 class="title">Wins:</h3>
+            <h5 class="title">Wins:</h5>
             <p id="Wins"></p>
             <!--Times guessed correctly)-->
         </container>
 
         <container>
-            <h3 class="title">What's the word?</h3>
+            <h5 class="title">Answer:</h5>
             <p id=currentWord></p>
         </container>
 
         <container>
-            <h3 class="title">Number of Guesses Remaining:</h3>
+            <h5 class="title">Guesses Remaining:</h5>
             <p id="guessRemaining"></p>
         </container>
 
         <container>
-            <h3 class="title">Letters guessed: </h3>
+            <h5 class="title">Letters guessed:</h5>
             <p id="lettersGuessed"></p>
+            <input type="reset" value="New Game" id="reset-btn">
         </container>
     </div>
     <!-- Ive made changes-->
-    <script type="type/javascript" src="/assets/javascript/game.js"></script>
+    <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>

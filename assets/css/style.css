@@ -33,3 +33,7 @@ header {
 .title {
     font-weight: bold;
 }
+
+#currentWord {
+    font-size: 45px;
+}
