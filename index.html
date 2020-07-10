@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!--my CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
@@ -30,13 +30,21 @@
         </container>
 
         <container>
-            <h5 class="title">Wins:</h5>
-            <p id="Wins"></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="title">Wins:</h5>
+                    <p id="wins"></p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="title">Losses:</h5>
+                    <p id="losses"></p>
+                </div>
+            </div>
             <!--Times guessed correctly)-->
         </container>
 
         <container>
-            <h5 class="title">Answer:</h5>
+            <h5 class="title">Current Word:</h5>
             <p id="currentWord"></p>
         </container>
 
@@ -48,7 +56,7 @@
         <container>
             <h5 class="title">Letters guessed:</h5>
             <p id="lettersGuessed"></p>
-            
+
             <p><input type="reset" value="New Game" id="reset-btn"></p>
         </container>
     </div>
