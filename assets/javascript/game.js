@@ -59,18 +59,60 @@ function gameBegins() {
     document.getElementById("lettersGuessed").innerHTML = wrongLetters;
 };
 
-// gameBegins();
+gameBegins();
 
-// on.click event for when letter is selected
+
 
 // 1. check to see if letter pressed is a letter
 function letterCheck(letter) {
+    var correctLetter = false;
+    guessesRemaining = 7;
 
+
+    for (var i = 0; i < blanks; i++) {
+        if (chosenWord[i] === letter) {
+            correctLetter = true;
+        }
+    }
+    if (correctLetter) {
+        for (var j = 0; j < blanks; j++) {
+            if (chosenWord[j] === letter) {
+                revealAnswer[j] = letter;
+            }
+        }
+        console.log(revealAnswer);
+    }
+    else {
+        wrongLetters.push(letter);
+        guessesRemaining--;
+    }
+    console.log(guessesRemaining);
+    console.log(wrongLetters);
 }
+letterCheck("b");
+
 // 2. if it is a letter in the chosen word then display it instead of _
 // 3. if letter is not in chosen word then display it in guessed letters section
-        // and decrease guesses remaining and display
+// and decrease guesses remaining and display
+
+
 // once remaining guesses reaches 0 then
+
+function gameReset() {
+    if (guessesRemaining === 0) {
+        losses++;
+        alert("You Lose");
+        document.getElementById("losses").innerHTML = losses;
+        gameBegins();
+    }
+    else (lettersInChosenWord.toString() === revealAnswer.toString()) {
+        wins++;
+        alert("WINNER!!");
+        document.getElementById("wins").innerHTML = wins;
+        gameBegins();
+
+    }
+}
 // 1. losses counter adds 1 and displays
 //2. game starts over/resets
 
@@ -78,6 +120,10 @@ function letterCheck(letter) {
 //1. wins counter adds 1 and displays
 //2. games starts over/resets
 
+
+// on.click event for when letter is selected and run functions
+
+gameBegins();
 
 
 // BONUS: play tropical music when word is revealed; or different sound if lost
