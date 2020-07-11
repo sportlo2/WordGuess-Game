@@ -34,38 +34,38 @@ function gameBegins() {
 
     // guesses remaining resets
     guessesRemaining = 7;
-    // wrongLetters resets to empty
-    wrongLetters = [];
-    //Current word resets to show blanks for next word
-    revealAnswer = [];
+
     //random word is chosen
     chosenWord = gameWords[Math.floor(Math.random() * gameWords.length)];
     // display _ for each letter of random word
     lettersInChosenWord = chosenWord.split("");
     blanks = lettersInChosenWord.length;
 
-    console.log(chosenWord);
+    // wrongLetters resets to empty
+    wrongLetters = [];
+    //Current word resets to show blanks for next word
+    revealAnswer = [];
 
     for (var i = 0; i < blanks; i++) {
         revealAnswer.push("_");
     }
 
-    console.log(revealAnswer);
 
     // print to appropriate HTML
 
     document.getElementById("guessRemaining").innerHTML = guessesRemaining;
     document.getElementById("currentWord").innerHTML = revealAnswer.join(" ");
     document.getElementById("lettersGuessed").innerHTML = wrongLetters;
-};
+}
 
 
+gameBegins();
 
 // 1. check to see if letter pressed is a letter
 function letterCheck(letter) {
     var correctLetter = false;
-    guessesRemaining = 7;
 
+    guessesRemaining = 7;
 
     for (var i = 0; i < blanks; i++) {
         if (chosenWord[i] === letter) {
@@ -78,16 +78,14 @@ function letterCheck(letter) {
                 revealAnswer[j] = letter;
             }
         }
-        console.log(revealAnswer);
+
     }
     else {
         wrongLetters.push(letter);
         guessesRemaining--;
     }
-    console.log(guessesRemaining);
-    console.log(wrongLetters);
-}
 
+}
 
 // 2. if it is a letter in the chosen word then display it instead of _
 // 3. if letter is not in chosen word then display it in guessed letters section
@@ -97,30 +95,37 @@ function letterCheck(letter) {
 // once remaining guesses reaches 0 then
 
 function gameReset() {
-    if (guessesRemaining === 0) {
+console.log("total wins" + wins + "total Losses" + losses + "guesses left" + guessesRemaining);
+
+    document.getElementById("guessRemaining").innerHTML = guessesRemaining;
+    document.getElementById("currentWord").innerHTML = revealAnswer.join(" ");
+    document.getElementById("lettersGuessed").innerHTML = wrongLetters.join(" ");
+
+    if (lettersInChosenWord.toString() === revealAnswer.toString()) {
+        wins++;
+        alert("WINNER!!");
+        document.getElementById("totalWins").innerHTML = wins;
+        gameBegins();
+    }
+    else if (guessesRemaining === 0) {
         losses++;
         alert("You Lose");
         document.getElementById("totalLosses").innerHTML = losses;
         gameBegins();
     }
-    else if (lettersInChosenWord.toString() === revealAnswer.toString()) {
-    wins++;
-    alert("WINNER!!");
-    document.getElementById("totalWins").innerHTML = wins;
-    gameBegins();
-    }
+
 }
 
-gameBegins();
-
 document.onkeyup = function(event) {
+
     if (event.keycode >= 65 && event.keycode <= 90) {
-        
-        var letterChosen = event.key.toLowercase();
+
+        var letterChosen = event.key.toLowerCase();
         letterCheck(letterChosen);
         gameReset();
     }
 };
+
 
 // 1. losses counter adds 1 and displays
 //2. game starts over/resets
