@@ -28,7 +28,7 @@ var guessesRemaining = 7;
 
 // start/reset the game
 
-function gameBegins() {
+var gameBegins = function() {
 
 
 
@@ -37,6 +37,7 @@ function gameBegins() {
 
     //random word is chosen
     chosenWord = gameWords[Math.floor(Math.random() * gameWords.length)];
+
     // display _ for each letter of random word
     lettersInChosenWord = chosenWord.split("");
     blanks = lettersInChosenWord.length;
@@ -56,10 +57,10 @@ function gameBegins() {
     document.getElementById("guessRemaining").innerHTML = guessesRemaining;
     document.getElementById("currentWord").innerHTML = revealAnswer.join(" ");
     document.getElementById("lettersGuessed").innerHTML = wrongLetters;
+
+
 }
 
-
-gameBegins();
 
 // 1. check to see if letter pressed is a letter
 function letterCheck(letter) {
@@ -79,8 +80,7 @@ function letterCheck(letter) {
             }
         }
 
-    }
-    else {
+    } else {
         wrongLetters.push(letter);
         guessesRemaining--;
     }
@@ -95,7 +95,7 @@ function letterCheck(letter) {
 // once remaining guesses reaches 0 then
 
 function gameReset() {
-console.log("total wins" + wins + "total Losses" + losses + "guesses left" + guessesRemaining);
+    console.log("total wins" + wins + "total Losses" + losses + "guesses left" + guessesRemaining);
 
     document.getElementById("guessRemaining").innerHTML = guessesRemaining;
     document.getElementById("currentWord").innerHTML = revealAnswer.join(" ");
@@ -106,8 +106,7 @@ console.log("total wins" + wins + "total Losses" + losses + "guesses left" + gue
         alert("WINNER!!");
         document.getElementById("totalWins").innerHTML = wins;
         gameBegins();
-    }
-    else if (guessesRemaining === 0) {
+    } else if (guessesRemaining === 0) {
         losses++;
         alert("You Lose");
         document.getElementById("totalLosses").innerHTML = losses;
@@ -115,6 +114,10 @@ console.log("total wins" + wins + "total Losses" + losses + "guesses left" + gue
     }
 
 }
+
+
+
+gameBegins();
 
 document.onkeyup = function(event) {
 
@@ -125,18 +128,3 @@ document.onkeyup = function(event) {
         gameReset();
     }
 };
-
-
-// 1. losses counter adds 1 and displays
-//2. game starts over/resets
-
-// or once chosen word is revealed then
-//1. wins counter adds 1 and displays
-//2. games starts over/resets
-
-
-// on.click event for when letter is selected and run functions
-
-
-// BONUS: play tropical music when word is revealed; or different sound if lost
-// play waves sound during entire game; play different noise when letter selected is right or wrong
