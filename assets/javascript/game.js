@@ -19,6 +19,7 @@ var wrongLetters = [];
 var lettersInChosenWord = [];
 var blanks = 0;
 var revealAnswer = [];
+var letterChosen = "";
 
 
 // counters
@@ -37,6 +38,7 @@ var gameBegins = function() {
 
     //random word is chosen
     chosenWord = gameWords[Math.floor(Math.random() * gameWords.length)];
+    console.log(chosenWord);
 
     // display _ for each letter of random word
     lettersInChosenWord = chosenWord.split("");
@@ -65,8 +67,6 @@ var gameBegins = function() {
 // 1. check to see if letter pressed is a letter
 function letterCheck(letter) {
     var correctLetter = false;
-
-    guessesRemaining = 7;
 
     for (var i = 0; i < blanks; i++) {
         if (chosenWord[i] === letter) {
@@ -106,6 +106,7 @@ function gameReset() {
         alert("WINNER!!");
         document.getElementById("totalWins").innerHTML = wins;
         gameBegins();
+
     } else if (guessesRemaining === 0) {
         losses++;
         alert("You Lose");
@@ -120,11 +121,14 @@ function gameReset() {
 gameBegins();
 
 document.onkeyup = function(event) {
-
-    if (event.keycode >= 65 && event.keycode <= 90) {
-
-        var letterChosen = event.key.toLowerCase();
+    // Check if the key pressed is a letter.
+    if (event.keyCode >= 60 && event.keyCode <= 90) {
+        // Capture pressed key and make it lowercase.
+        letterChosen = String.fromCharCode(event.which).toLowerCase(); //String(event.keycode).toLowerCase();
         letterCheck(letterChosen);
+        // Pass the guessed letter into our updatePage function to run the game logic.
         gameReset();
+        console.log(letterChosen);
     }
+
 };
